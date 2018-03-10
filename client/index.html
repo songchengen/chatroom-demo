@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" id="text">
+	<button id="send">Send</button>
+	<div id="message"></div>
+	<script type="text/javascript">
+		var message = document.getElementById("message");
+		var websocket = new WebSocket("ws://echo.websocket.org/");
+		websocket.onopen = function (){
+			console.log("Connect!");
+			message.innerHTML = "Connect";
+		}
+		websocket.onclose = function(){
+			console.log("DisConnect!");
+			message.innerHTML = "DisConnect";
+		}
+		websocket.onmessage = function(evt){
+			console.log(evt);
+			message.innerHTML = evt.data;
+		}
+		document.getElementById("send").addEventListener('click', function(){
+			var txt = document.getElementById("text").value;
+			websocket.send(txt);
+		});
+	</script>
+</body>
+</html>
