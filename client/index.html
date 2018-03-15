@@ -7,7 +7,6 @@
  #output{width:600px;height:400px;background:whiteSmoke;padding:1em .5em;color:#000;border:none;}
  button{padding:.2em 1em;}
 </style>
-<!-- <link href="layout.css" rel="stylesheet" type="text/css" />  -->
 <body>
  
 <textarea id="output" readonly="readonly"></textarea>
@@ -16,7 +15,6 @@
 <button id="send">send</button>
  
 <script type="text/javascript">
-// localhost
 var socket = new WebSocket('ws://localhost:3000/')
 socket.onopen = function(e) {
   log(e.type);
